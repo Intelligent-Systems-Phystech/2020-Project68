@@ -74,8 +74,28 @@
 
 Мультимодальная модель строится путем максимизации взвешенной суммы логарифмов правдоподобия модальностей и регуляризаторов.
 \begin{equation}
-    % \sum\limits_{m \in M} \tau_m \sum\limits_{d \in D} \sum\limits_{w \in \W_m} n_{dw} \ln \sum\limits_{t \in T} \phi_{wt}\theta_{td} + R(\Phi, \Theta) \rightarrow  \max_{\Phi, \Theta} % bug in formula
+    \sum\limits_{m \in M} \tau_m \sum\limits_{d \in D} \sum\limits_{w \in W_m} n_{dw} \ln \sum\limits_{t \in T} \phi_{wt}\theta_{td} + R(\Phi, \Theta) \rightarrow  \max_{\Phi, \Theta} % bug in formula
 \end{equation}
+
+Предсказание делается следующим образом:
+\begin{equation}
+    p(c|d) = \sum_{t \in T} \phi_{ct}\theta_{td} % учет мультимодальности
+\end{equation}
+
+Документ $d$ относится к классу $c$, если $p(c|d) >= \gamma_c$
+
+
+Качество классификации измеряется с помощью метрики $F1$ с микро усреднением
+\begin{equation}
+    F1_micro = \frac{2}{C} \sum\limits_{c \in C} \cdot \frac{precision_c \cdot recall_c}{precision_c + recall_c}
+\end{equation}
+
+% предсказание
+% f1
+% grid search http://www.machinelearning.ru/wiki/images/5/55/Minaev2011ms.pdf
+% http://www.machinelearning.ru/wiki/images/6/6d/Voron-ML-1.pdf
+
+
  
 \paragraph{Название параграфа}
 Разделы и~параграфы, за исключением списков литературы, нумеруются.
