@@ -285,3 +285,8 @@ TSWLatexianTemp*
 #*Notes.bib
 
 fix_git.sh
+
+.idea/
+__pycache__
+**/data/
+**/logs

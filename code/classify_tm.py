@@ -18,12 +18,12 @@ filler = '-' * 6 * 17
 print(filler)
 print(title.format('', "Training time", "Train SVM", "Test SVM", "Train TM", "Test TM"))
 print(filler)
-datasets = [R8, R52, Ohsumed, AGNews, NG20, DBPedia]
+datasets = [R52, Ohsumed, AGNews, NG20, DBPedia]
 data_folder = 'data'
 
-for data in datasets:
+for dataset in datasets:
+    data = dataset(data_folder, lemmatize=True, exclude_stop_words=True, exclude_label_field=False)
     print(f"|{data.name:^15}|", end='')
-    data = data(data_folder, lemmatize=True, exclude_stop_words=True, exclude_label_field=False)
     t = time.time()
     train_batch = convert_to_batch(data.train_docs)
     test_batch = convert_to_batch(data.test_docs)
