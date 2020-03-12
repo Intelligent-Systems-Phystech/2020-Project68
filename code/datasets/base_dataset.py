@@ -26,7 +26,7 @@ class JsonDataset:
             if exclude_label_field:
                 del df_train["label"]
             self.columns = df_train.columns.to_list()
-            self.train_docs = df_train.T.to_dict().values()  # dataframe to list of dicts
+            self.train_docs = list(df_train.T.to_dict().values())  # dataframe to list of dicts
 
         with bz2.BZ2File(os.path.join(path, 'test.bz2'), "r") as f:
             df_test = pd.read_json(f, lines=True)
@@ -38,7 +38,7 @@ class JsonDataset:
                 df_test["ngrams"] = self.ngrammer.transform(df_test["text"])
             self.test_labels = df_test['label'].to_list()
             del df_test["label"]
-            self.test_docs = df_test.T.to_dict().values()
+            self.test_docs = list(df_test.T.to_dict().values())
 
     def _cast_to_str(self, df):
         for col in df.columns:
