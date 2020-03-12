@@ -1,3 +1,8 @@
+import os
+import glob
+from pathlib import Path
+
+
 from matplotlib import pylab as plt
 plt.rcParams['font.family'] = 'DejaVu Serif'
 plt.rcParams['lines.linewidth'] = 2
@@ -11,12 +16,19 @@ plt.rcParams['axes.labelsize'] = 24
 
 import pandas as pd
 
-df = pd.read_excel('data/reports/R8_class_ids.xlsx')
-plt.scatter(df['label'], df['f1_test_tm'])
-plt.scatter(df['text'], df['f1_test_tm'], marker='.')
-plt.xlabel('num_topics')
-plt.ylabel('f1_test')
+for file in glob.glob('reports/*.csv'):
 
-plt.grid(True)
-plt.tight_layout()
-plt.savefig('1.svg') # Поддерживаемые форматы: eps, jpeg, jpg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff
+    df = pd.read_csv(file)
+    dataset_name = Path(file).stem
+
+    df = df.sort_values('topic_num')
+    plt.plot(df['topic_num'], df['f1_test_tm'])
+    plt.title(dataset_name)
+    plt.xlabel('num_topics')
+    plt.ylabel('f1_test')
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig('img/{}_topic_num.svg'.format(dataset_name))
+    plt.clf()
+
+    print(dataset_name, df.iloc[df['f1_test_tm'].idxmax()]['topic_num'])

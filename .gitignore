@@ -290,3 +290,4 @@ fix_git.sh
 __pycache__
 **/data/
 **/logs
+/reports

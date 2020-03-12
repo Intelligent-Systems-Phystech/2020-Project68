@@ -1,5 +1,3 @@
-
-
 class ReportedResults:
 
     def __init__(self):

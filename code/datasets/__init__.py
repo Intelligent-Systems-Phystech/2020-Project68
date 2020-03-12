@@ -5,6 +5,8 @@ from .R52 import R52
 from .DBPedia import DBPedia
 from .Ohsumed import Ohsumed
 from .Eurlex import Eurlex
+from .imdb import IMDB
+from .datasets import DATASETS
 
 
 """

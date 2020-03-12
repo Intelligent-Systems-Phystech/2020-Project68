@@ -24,7 +24,7 @@ config_artm_logs()
 
 @click.command()
 @click.option('--data_folder', default='data', help='Path to folder with dataset')
-@click.option('--report_folder', default='data/reports', help='Path to folder to save reports')
+@click.option('--report_folder', default='reports', help='Path to folder to save reports')
 def select_params(data_folder, report_folder):
 
     datasets = [R8, R52, NG20, Ohsumed, IMDB]

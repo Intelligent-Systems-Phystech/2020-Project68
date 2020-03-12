@@ -1,6 +1,6 @@
 import os
 from .common import ReportedResults
-from .dataset import JsonDataset
+from .base_dataset import JsonDataset
 
 
 class R8(JsonDataset):
