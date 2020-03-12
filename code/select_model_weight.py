@@ -34,7 +34,7 @@ config_artm_logs()
 @click.command()
 @click.option('--data_folder', default='data', help='Path to folder with dataset')
 @click.option('--report_folder', default='reports', help='Path to folder to save reports')
-@click.option('--datasets', default='R8', help='Dataset names, slitted by comma (,)')
+@click.option('--datasets', default='20NG', help='Dataset names, slitted by comma (,)')
 @click.option('--best_params', default='best_params.json', help='Dataset names, slitted by comma (,)')
 def select_weights(data_folder, report_folder, datasets, best_params):
 
