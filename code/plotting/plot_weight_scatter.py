@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('reports/20NG_class_ids.csv')
+df = pd.read_csv('../reports/class_ids/20NG_class_ids.csv')
 
 # sns.pairplot(df, x_vars='label,ngrams,text'.split(','), y_vars=['f1_test_tm'])
 # sns.pairplot(df['label,ngrams,text'.split(',') + ['f1_test_tm']], hue='f1_test_tm')
